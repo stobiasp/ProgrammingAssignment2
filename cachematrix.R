@@ -1,18 +1,61 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
-
-makeCacheMatrix <- function(x = matrix()) {
-
-}
 
 
-## Write a short comment describing this function
+## Function that defines all the cache of the data sets
+
+makeCacheMatrix <- function(x =matrix()) {
+  
+
+    m <- NULL
+    set <- function(y) {
+      x <<- y
+      m <<- NULL
+    }
+    get <- function() x
+    setmean <- function(mean) m <<- mean
+    getmean <- function() m
+    list(set = set, get = get,
+         setmean = setmean,
+         getmean = getmean)
+  }
+  
+
+
+
+##function that checks if a matrix exists and if so pulls the value and 
+#if not it sets the value
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
-}
 
 
-#test file 1
+    m <- x$getmean()
+    if(!is.null(m)) {
+      message("getting cached data")
+      return(m)
+    }
+    data <- x$get()
+    dim<-length(data)/2
+    data<-matrix(data,nrow=dim,ncol=dim)
+    m <- solve(data)
+    x$setmean(m)
+    m
+  }
+  
+# Place valies of matrix into variable m
+m<-c(1,2,9,4)
+
+# Run makeCacheMatrix on m and results into x
+x<-makeCacheMatrix(m)
+
+# run cacheSolve for matrix inverse
+cacheSolve(x)
+
+
+#results
+
+#[,1]        [,2]
+#[1,] -0.2857143  0.64285714
+#[2,]  0.1428571 -0.07142857
+
+
+
+
