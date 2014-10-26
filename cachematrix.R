@@ -1,6 +1,7 @@
 
 
-## Function that defines all the cache of the data sets
+## Function that defines all the cache of the data sets; Based off the means function provided in the example but 
+#modified for what was asked. Original names not changed from the mean.
 
 makeCacheMatrix <- function(x =matrix()) {
   
@@ -22,7 +23,10 @@ makeCacheMatrix <- function(x =matrix()) {
 
 
 ##function that checks if a matrix exists and if so pulls the value and 
-#if not it sets the value
+#if not it sets the value.
+
+#Based off the means function provided in the example but 
+#modified for what was asked. Original names not changed from the mean.
 
 cacheSolve <- function(x, ...) {
 
